@@ -16,6 +16,8 @@ namespace Movie_Mania_2.Models
         public String Nombre { get; set; }
         [Required(ErrorMessage = "Este campo es obligatorio"), MaxLength(500, ErrorMessage = "Maxima cantidad de caracteres 500")]
         public String Sinopsis { get; set; }
+        [Required(ErrorMessage = "Este campo es obligatorio")]
+        public Genre Genero { get; set; }
         [Required(ErrorMessage = "Este campo es obligatorio (Formato DD/MM/YYYY)")]
         public DateTime Estreno { get; set; }
     }

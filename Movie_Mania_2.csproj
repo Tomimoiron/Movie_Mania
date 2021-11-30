@@ -152,7 +152,12 @@
     <Compile Include="Migrations\202111292301389_User_model_modification_2.Designer.cs">
       <DependentUpon>202111292301389_User_model_modification_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111301826157_Movie_model_modification_1.cs" />
+    <Compile Include="Migrations\202111301826157_Movie_model_modification_1.Designer.cs">
+      <DependentUpon>202111301826157_Movie_model_modification_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\User_Type.cs" />
@@ -167,6 +172,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\pexels-anna-tis-5633515.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -206,7 +212,7 @@
     <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -233,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111292301389_User_model_modification_2.resx">
       <DependentUpon>202111292301389_User_model_modification_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111301826157_Movie_model_modification_1.resx">
+      <DependentUpon>202111301826157_Movie_model_modification_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
