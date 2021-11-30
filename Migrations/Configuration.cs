@@ -10,6 +10,7 @@ namespace Movie_Mania_2.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            // AutomaticMigrationDataLossAllowed = true;
             ContextKey = "Movie_Mania_2.Data.Movie_Mania_2Context";
         }
 

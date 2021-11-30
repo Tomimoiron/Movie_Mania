@@ -47,10 +47,11 @@ namespace Movie_Mania_2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Usuario,tipo_Usuario,Mail")] User user)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Usuario,tipo_Usuario,Mail,Password")] User user)
         {
             if (ModelState.IsValid)
             {
+                user.tipo_Usuario = 0;
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
