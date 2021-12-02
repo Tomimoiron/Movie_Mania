@@ -39,6 +39,7 @@ namespace Movie_Mania_2.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
@@ -51,10 +52,29 @@ namespace Movie_Mania_2.Controllers
         {
             if (ModelState.IsValid)
             {
-                user.tipo_Usuario = 0;
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (db.Users.Any(x=>x.Usuario == user.Usuario))
+                {
+                    ViewBag.NotificationUser = "Este usuario ya esta en uso";
+                    
+                    if (db.Users.Any(x => x.Mail == user.Mail))
+                    {
+                        ViewBag.NotificationMail = "Este mail ya esta en uso";
+                        return View();
+                    }
+                    return View();
+                
+                }
+                else
+                {
+                    user.tipo_Usuario = 0;
+                    db.Users.Add(user);
+                    db.SaveChanges();
+
+                    Session["Id"] = user.Id.ToString();
+                    Session["Username"] = user.Usuario.ToString();
+
+                    return RedirectToAction("Details", new { id = user.Id });
+                }
             }
 
             return View(user);
@@ -84,6 +104,11 @@ namespace Movie_Mania_2.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (db.Users.Any(x => x.Usuario == user.Usuario))
+                {
+                    ViewBag.Notification = "Este usuario ya esta en uso";
+                    return View();
+                }
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -125,5 +150,35 @@ namespace Movie_Mania_2.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: Users/Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        //POST: Users/Login/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User user)
+        {
+            var checkLogin = db.Users.Where(x => x.Usuario.Equals(user.Usuario) && x.Password.Equals(user.Password));
+
+            var validated_user = db.Users.Find(user.Usuario);
+            
+            if (validated_user != null)   
+            {
+                Session["Id"] = validated_user.Id.ToString();
+                Session["Username"] = validated_user.Usuario.ToString();
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.Notification = "El usuario o la contraseña no son correctos";
+            }
+            //db.Users.Find(user.Usuario);
+            return View(user);
+        }
+
     }
 }

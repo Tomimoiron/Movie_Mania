@@ -156,6 +156,10 @@
     <Compile Include="Migrations\202111301826157_Movie_model_modification_1.Designer.cs">
       <DependentUpon>202111301826157_Movie_model_modification_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112020350154_User_PrimaryKey.cs" />
+    <Compile Include="Migrations\202112020350154_User_PrimaryKey.Designer.cs">
+      <DependentUpon>202112020350154_User_PrimaryKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -164,6 +168,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Movie_Mania_2Context-20211127172125.mdf" />
+    <Content Include="App_Data\Movie_Mania_2Context-20211127172125_log.ldf">
+      <DependentUpon>Movie_Mania_2Context-20211127172125.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -210,6 +218,7 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\App_LocalResources\" />
@@ -242,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111301826157_Movie_model_modification_1.resx">
       <DependentUpon>202111301826157_Movie_model_modification_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112020350154_User_PrimaryKey.resx">
+      <DependentUpon>202112020350154_User_PrimaryKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
