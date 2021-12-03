@@ -34,7 +34,7 @@ namespace Movie_Mania_2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(user);  
         }
 
         // GET: Users/Create
@@ -160,6 +160,10 @@ namespace Movie_Mania_2.Controllers
         // GET: Users/Login
         public ActionResult Login()
         {
+            if(Session["Id"] != null)
+            {
+                return RedirectToAction("Index","Home");
+            }
             return View();
         }
 
@@ -177,6 +181,15 @@ namespace Movie_Mania_2.Controllers
                 {
                     Session["Id"] = item.Id.ToString();
                     Session["Username"] = item.Usuario.ToString();
+                    if(item.tipo_Usuario == User_Type.Client)
+                    {
+                        Session["User_Type"] = item.tipo_Usuario.ToString();
+                    }
+                    else
+                    {
+                        
+                        Session["User_Type"] = item.tipo_Usuario.ToString();
+                    }
                     return RedirectToAction("Index", "Home");
                 }
             }
