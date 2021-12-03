@@ -11,13 +11,13 @@ namespace Movie_Mania_2.Models
 {
     public class User
     {
+        [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Este campo es obligatorio"), MaxLength(30,ErrorMessage ="Maxima cantidad de caracteres 30")]
 
         public String Nombre { get; set; }
         [Required(ErrorMessage = "Este campo es obligatorio"), MaxLength(50, ErrorMessage = "Maxima cantidad de caracteres 50")]
         public String Apellido { get; set; }
-        [Key]
         [Required(ErrorMessage = "Este campo es obligatorio"), MaxLength(20, ErrorMessage = "Maxima cantidad de caracteres 20")]
         public String Usuario { get; set; }
 
