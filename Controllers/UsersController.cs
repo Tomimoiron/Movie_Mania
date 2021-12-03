@@ -13,6 +13,7 @@ namespace Movie_Mania_2.Controllers
 {
     public class UsersController : Controller
     {
+        
         private Movie_Mania_2Context db = new Movie_Mania_2Context();
 
         // GET: Users
@@ -48,21 +49,26 @@ namespace Movie_Mania_2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Apellido,Usuario,tipo_Usuario,Mail,Password")] User user)
+        public ActionResult Create([Bind(Include = "Nombre,Apellido,Usuario,Mail,Password")] User user)
         {
             if (ModelState.IsValid)
             {
-                if (db.Users.Any(x=>x.Usuario == user.Usuario))
+                if (db.Users.Any(x => x.Usuario == user.Usuario))
                 {
                     ViewBag.NotificationUser = "Este usuario ya esta en uso";
-                    
+
                     if (db.Users.Any(x => x.Mail == user.Mail))
                     {
                         ViewBag.NotificationMail = "Este mail ya esta en uso";
                         return View();
                     }
                     return View();
-                
+
+                }
+                else if (db.Users.Any(x => x.Mail == user.Mail))
+                {
+                    ViewBag.NotificationMail = "Este mail ya esta en uso";
+                    return View();
                 }
                 else
                 {
@@ -164,19 +170,18 @@ namespace Movie_Mania_2.Controllers
         {
             var checkLogin = db.Users.Where(x => x.Usuario.Equals(user.Usuario) && x.Password.Equals(user.Password));
 
-            var validated_user = db.Users.Find(user.Usuario);
-            
-            if (validated_user != null)   
+
+            foreach(var item in db.Users)
             {
-                Session["Id"] = validated_user.Id.ToString();
-                Session["Username"] = validated_user.Usuario.ToString();
-                return RedirectToAction("Index", "Home");
+                if (item.Usuario == user.Usuario && item.Password == user.Password)
+                {
+                    Session["Id"] = item.Id.ToString();
+                    Session["Username"] = item.Usuario.ToString();
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            else
-            {
-                ViewBag.Notification = "El usuario o la contraseña no son correctos";
-            }
-            //db.Users.Find(user.Usuario);
+            ViewBag.Notification = "El usuario o la contraseña no son correctos";
+
             return View(user);
         }
 

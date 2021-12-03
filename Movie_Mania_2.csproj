@@ -156,10 +156,6 @@
     <Compile Include="Migrations\202111301826157_Movie_model_modification_1.Designer.cs">
       <DependentUpon>202111301826157_Movie_model_modification_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112020350154_User_PrimaryKey.cs" />
-    <Compile Include="Migrations\202112020350154_User_PrimaryKey.Designer.cs">
-      <DependentUpon>202112020350154_User_PrimaryKey.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -251,9 +247,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111301826157_Movie_model_modification_1.resx">
       <DependentUpon>202111301826157_Movie_model_modification_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112020350154_User_PrimaryKey.resx">
-      <DependentUpon>202112020350154_User_PrimaryKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
