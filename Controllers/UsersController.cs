@@ -53,11 +53,11 @@ namespace Movie_Mania_2.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (db.Users.Any(x => x.Usuario == user.Usuario))
+                if (db.Users.Any(x => x.Usuario.Equals(user.Usuario)))
                 {
                     ViewBag.NotificationUser = "Este usuario ya esta en uso";
 
-                    if (db.Users.Any(x => x.Mail == user.Mail))
+                    if (db.Users.Any(x => x.Mail.Equals(user.Mail)))
                     {
                         ViewBag.NotificationMail = "Este mail ya esta en uso";
                         return View();
@@ -65,7 +65,7 @@ namespace Movie_Mania_2.Controllers
                     return View();
 
                 }
-                else if (db.Users.Any(x => x.Mail == user.Mail))
+                else if (db.Users.Any(x => x.Mail.Equals(user.Mail)))
                 {
                     ViewBag.NotificationMail = "Este mail ya esta en uso";
                     return View();
@@ -177,11 +177,11 @@ namespace Movie_Mania_2.Controllers
 
             foreach(var item in db.Users)
             {
-                if (item.Usuario == user.Usuario && item.Password == user.Password)
+                if (item.Usuario.Equals(user.Usuario) && item.Password.Equals(user.Password))
                 {
                     Session["Id"] = item.Id.ToString();
                     Session["Username"] = item.Usuario.ToString();
-                    if(item.tipo_Usuario == User_Type.Client)
+                    if(item.tipo_Usuario.Equals(User_Type.Client))
                     {
                         Session["User_Type"] = item.tipo_Usuario.ToString();
                     }
