@@ -106,15 +106,11 @@ namespace Movie_Mania_2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Apellido,Usuario,tipo_Usuario,Mail")] User user)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Apellido,tipo_Usuario,Mail")] User user)
         {
             if (ModelState.IsValid)
             {
-                if (db.Users.Any(x => x.Usuario == user.Usuario))
-                {
-                    ViewBag.Notification = "Este usuario ya esta en uso";
-                    return View();
-                }
+                
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -196,6 +192,15 @@ namespace Movie_Mania_2.Controllers
             ViewBag.Notification = "El usuario o la contraseña no son correctos";
 
             return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Details(int id)
+        {
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
 
     }

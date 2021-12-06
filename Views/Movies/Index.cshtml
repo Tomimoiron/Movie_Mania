@@ -19,6 +19,9 @@
                     @Html.DisplayNameFor(model => model.Sinopsis)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.Genero)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Estreno)
                 </th>
                 <th></th>
@@ -27,23 +30,30 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Sinopsis)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Estreno)
-                    </td>
-                    <td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sinopsis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estreno)
+                </td>
+                <td>
 
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
+                    @Html.ActionLink("Detalles ", "Details", new { id = item.Id })
+
+                    @if ((String)Session["User_Type"] == "Admin")
+                    {
+                        @Html.ActionLink("Editar ", "Edit", new { id = item.Id })
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.Id })
+                    }
+                </td>
+            </tr>
             }
         </tbody>
     </table>

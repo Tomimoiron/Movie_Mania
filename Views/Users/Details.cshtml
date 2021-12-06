@@ -7,7 +7,20 @@
 <div class="form-horizontal">
     <div class="row">
         <div class="col-xs-3 col-md- auto-centrar">
-            <div class="card" style="margin-top:60px">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                if ((String)Session["Username"] == @Html.DisplayFor(model => model.Usuario).ToString())
+                {
+
+
+                    <input type="submit" value="LogOut" class="btn btn-danger  float-right mt-3 mb-3" />
+
+                }
+            }
+            <div class="card" style="margin-top: 30px">
+
                 <h2 class="card-header text-white azul-2" style="margin-top:0px ; margin-bottom:15px">Detalles de Usuario</h2>
                 <dl class="dl-horizontal text-left">
                     <dt>
@@ -53,7 +66,8 @@
                 </dl>
             </div>
             <div class="">
-                <button type="button" class="btn btn-success azul-1 float-right mt-3" onclick="location.href='@Url.Action("Index", "Users")'">Volver</button>
+                <button type="button" class="btn btn-success azul-3 float-right mt-3" onclick="location.href='@Url.Action("Index", "Users")'">Volver</button>
+
             </div>
         </div>
     </div>

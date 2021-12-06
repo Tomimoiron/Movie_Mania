@@ -10,21 +10,30 @@
         <div class="col-xs-12 col-md-6 margin-150" style="padding-left:100px">
 
             <h2 class="text-white ">
-               Peliculas
+                Peliculas
             </h2>
 
             <p class="text-white  texto-home">
                 Descubre las ultimas 5 peliculas agregadas en nuestra cartelera
             </p>
-            @{int cont = 0; }
 
+            @{
+                var cont = 0;
+                List<string> peliculas = new List<string>();
+            }
             @foreach (var item in Model)
             {
-
+                peliculas.Add(item.Nombre);
+            }
+            @{
+                 peliculas.Reverse();
+            }
+            @foreach (var item in peliculas)
+            {
                 if (cont < 5)
                 {
                     <h3 class="text-white ">
-                        @Html.DisplayFor(modelItem => item.Nombre)
+                        @Html.DisplayFor(modelItem => item)
                     </h3>
 
                 }
@@ -62,11 +71,12 @@
             </p>
         </div>
         <div class="col-md-9">
+
             @foreach (var item in Model)
             {
                 if ((int)item.Genero == 0)
                 {
-
+                    var detalle = @Html.DisplayFor(modelItem => item.Id);
                     <div class="col-md-3 margin-100" >
                         <div class="card" style="height:250px">
                             <div class="card-header">@Html.DisplayFor(modelItem => item.Nombre)</div>
@@ -74,7 +84,7 @@
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.Sinopsis)</p>
 
                             </div>
-                            <a href="#" class="btn btn-primary">Ver Detalles</a>
+                            <a href="@Url.Action("Details/" + detalle, "Movies")" class="btn btn-primary">Ver Detalles</a>
                         </div>
 
                     </div>
@@ -94,7 +104,7 @@
             {
                 if ((int)item.Genero == 1)
                 {
-
+                    var detalle = @Html.DisplayFor(modelItem => item.Id);
                     <div class="col-md-3 margin-100" >
                         <div class="card" style="height:250px">
                             <div class="card-header">@Html.DisplayFor(modelItem => item.Nombre)</div>
@@ -102,7 +112,8 @@
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.Sinopsis)</p>
 
                             </div>
-                            <a href="#" class="btn btn-primary">Ver Detalles</a>
+                           
+                            <a href="@Url.Action("Details/" + detalle, "Movies")" class="btn btn-primary"   >Ver Detalles</a>
                         </div>
 
                     </div>
@@ -122,7 +133,7 @@
             {
                 if ((int)item.Genero == 2)
                 {
-
+                    var detalle = @Html.DisplayFor(modelItem => item.Id);
                     <div class="col-md-3 margin-100" >
                         <div class="card" style="height:250px">
                             <div class="card-header">@Html.DisplayFor(modelItem => item.Nombre)</div>
@@ -130,7 +141,7 @@
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.Sinopsis)</p>
 
                             </div>
-                            <a href="#" class="btn btn-primary">Ver Detalles</a>
+                            <a href="@Url.Action("Details/" + detalle, "Movies")" class="btn btn-primary">Ver Detalles</a>
                         </div>
 
                     </div>

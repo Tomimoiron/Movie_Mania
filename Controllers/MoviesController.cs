@@ -79,7 +79,7 @@ namespace Movie_Mania_2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Sinopsis,Estreno")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Sinopsis,Genero,Estreno")] Movie movie)
         {
             if (ModelState.IsValid)
             {

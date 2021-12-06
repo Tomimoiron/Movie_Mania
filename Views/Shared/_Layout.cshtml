@@ -17,7 +17,7 @@
 
                 @if ((String)Session["User_Type"] == "Admin")
                 {
-                    <ul>@Html.ActionLink("Movies", "Create", "Movies", new { area = "" }, new { @class = "navbar-brand" })</ul>
+                    <ul>@Html.ActionLink("Movies", "Index", "Movies", new { area = "" }, new { @class = "navbar-brand" })</ul>
                     <ul>@Html.ActionLink("Users", "Index", "Users", new { area = "" }, new { @class = "navbar-brand" })</ul>
                     <ul>@Html.ActionLink("Profile", "Details", "Users", new { id = Session["Id"] }, new { @class = "navbar-brand" })</ul>
 

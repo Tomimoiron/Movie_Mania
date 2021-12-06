@@ -48,9 +48,17 @@
                         @Html.DisplayFor(modelItem => item.Mail)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+                        @Html.ActionLink("Detalles", "Details", new { id = item.Id })
+
+                        @if ((String)Session["User_Type"] == "Admin")
+                        {
+                            @Html.ActionLink("Editar ", "Edit", new { id = item.Id })
+                            @Html.ActionLink("Borrar", "Delete", new { id = item.Id })
+                        }
+
+
+
                     </td>
                 </tr>
             }
