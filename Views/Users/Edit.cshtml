@@ -18,6 +18,8 @@
                         <h2 class="card-header text-white azul-2" style="margin-top:0px ; margin-bottom:15px">Editar Usuario  @Html.DisplayFor(model => model.Usuario)</h2>
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.Password)
+                        @Html.HiddenFor(model => model.Usuario)
 
                         <div class="form-group p-cajas">
                             @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "col-md-12" })
