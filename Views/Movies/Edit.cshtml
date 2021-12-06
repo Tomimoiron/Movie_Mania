@@ -4,55 +4,59 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="container">
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <h4>Movie</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+        <div class="row">
+            <div class="col-xs-5 auto-centrar">
+                <div class="card" style="margin-top:60px">
+                    <h2 class="card-header text-white azul-2" style="margin-top:0px ; margin-bottom:15px">Editar Pelicula</h2>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group p-cajas">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "col-md-12" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Sinopsis, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Sinopsis, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Sinopsis, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group p-cajas">
+                        @Html.LabelFor(model => model.Sinopsis, htmlAttributes: new { @class = "col-md-12" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Sinopsis, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Sinopsis, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Estreno, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Estreno, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Estreno, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="form-group p-cajas">
+                        @Html.LabelFor(model => model.Estreno, htmlAttributes: new { @class = "col-md-12" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Estreno, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Estreno, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                    <div class="form-group ">
+                        <div class="p-boton">
+                            <input type="submit" value="Save" class="btn btn-success azul-3" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-success azul-1 float-right mt-3" onclick="location.href='@Url.Action("Index", "Movies")'">Volver</button>
+                </div>
             </div>
         </div>
     </div>
-}
+            }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        </div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

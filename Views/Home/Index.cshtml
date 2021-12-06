@@ -4,79 +4,139 @@
     ViewBag.Title = "Home Page";
 }
 
-    <h1 class="display-1 text-center" style="font-family:'Gill Sans MT'"> ULTIMAS AGREGADAS</h1>
-    <div class="container container-fluid">
+  
         @*CAROUSEL*@
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner" style="border-radius:30px;">
-                <div class="carousel-item active">
-                    <img src="https://tecnovortex.com/wp-content/uploads/2019/04/wallpaper-engine.jpg" class="img-fluid">
+    <div class="azul-1 fondo-unico row">
+        <div class="col-xs-12 col-md-6 margin-150" style="padding-left:100px">
+
+            <h2 class="text-white ">
+               Peliculas
+            </h2>
+
+            <p class="text-white  texto-home">
+                Descubre las ultimas 5 peliculas agregadas en nuestra cartelera
+            </p>
+            @{int cont = 0; }
+
+            @foreach (var item in Model)
+            {
+
+                if (cont < 5)
+                {
+                    <h3 class="text-white ">
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </h3>
+
+                }
+
+                cont++;
+            }
+
+        </div>
+        <div class="col-xs-12 col-md-6 margin-150" >
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" style="border-radius:30px;">
+                    <div class="carousel-item active">
+                        <img src="https://tecnovortex.com/wp-content/uploads/2019/04/wallpaper-engine.jpg" class="img-fluid">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg" class="img-fluid" alt="...">
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://i.pinimg.com/originals/a7/fc/aa/a7fcaa43650adc892c401956a08dc32a.jpg" class="img-fluid" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-
-        <hr class="invisible" />
-
-        @*PELICULAS POR GENERO*@
-        <div>
-            <div class="row">
-                <h1 class="text-center" style="font-family:'Gill Sans MT'">ACCION</h1>
-                @foreach (var item in Model)
-                {
-                    if ((int)item.Genero == 0)
-                    {
-                        <div class="col" style="border:double;border-radius:45px">
-                            @Html.DisplayFor(modelItem => item.Nombre)
-                        </div>
-                    }
-                }
-
-            </div>
-        </div>
-
-        <hr class="invisible" />
-
-        <div>
-            <div class="row">
-                <h1 class="text-center" style="font-family:'Gill Sans MT'">DRAMA</h1>
-                @foreach (var item in Model)
-                {
-                    if ((int)item.Genero == 1)
-                    {
-                        <div class="col" style="border:double;border-radius:45px">
-                            @Html.DisplayFor(modelItem => item.Nombre)
-                        </div>
-                    }
-                }
-            </div>
-        </div>
-
-        <hr class="invisible" />
-
-        <div>
-            <div class="row">
-                <h1 class="text-center" style="font-family:'Gill Sans MT'">COMEDIA</h1>
-                @foreach (var item in Model)
-                {
-                    if ((int)item.Genero == 2)
-                    {
-                        <div class="col">
-                            @Html.DisplayFor(modelItem => item.Nombre)
-                        </div>
-                    }
-                }
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
     </div>
+
+    <div class="fondo-unico row">
+        <div class="col-md-3 margin-100">
+            <p class="  texto-home">
+                PELICULAS DE ACCION
+            </p>
+        </div>
+        <div class="col-md-9">
+            @foreach (var item in Model)
+            {
+                if ((int)item.Genero == 0)
+                {
+
+                    <div class="col-md-3 margin-100" >
+                        <div class="card" style="height:250px">
+                            <div class="card-header">@Html.DisplayFor(modelItem => item.Nombre)</div>
+                            <div class="card-body">
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Sinopsis)</p>
+
+                            </div>
+                            <a href="#" class="btn btn-primary">Ver Detalles</a>
+                        </div>
+
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="fondo-unico azul-1 row">
+        <div class="col-md-3 margin-100">
+            <p class="text-white  texto-home">
+                PELICULAS DE DRAMA
+            </p>
+        </div>
+        <div class="col-md-9">
+            @foreach (var item in Model)
+            {
+                if ((int)item.Genero == 1)
+                {
+
+                    <div class="col-md-3 margin-100" >
+                        <div class="card" style="height:250px">
+                            <div class="card-header">@Html.DisplayFor(modelItem => item.Nombre)</div>
+                            <div class="card-body">
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Sinopsis)</p>
+
+                            </div>
+                            <a href="#" class="btn btn-primary">Ver Detalles</a>
+                        </div>
+
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="fondo-unico  row">
+        <div class="col-md-3 margin-100">
+            <p class="  texto-home">
+                PELICULAS DE COMEDIA
+            </p>
+        </div>
+        <div class="col-md-9">
+            @foreach (var item in Model)
+            {
+                if ((int)item.Genero == 2)
+                {
+
+                    <div class="col-md-3 margin-100" >
+                        <div class="card" style="height:250px">
+                            <div class="card-header">@Html.DisplayFor(modelItem => item.Nombre)</div>
+                            <div class="card-body">
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Sinopsis)</p>
+
+                            </div>
+                            <a href="#" class="btn btn-primary">Ver Detalles</a>
+                        </div>
+
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
 

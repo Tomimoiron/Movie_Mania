@@ -4,47 +4,50 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="form-horizontal">
+    <div class="row">
+        <div class="col-xs-3 col-md- auto-centrar">
+            <div class="card" style="margin-top:60px">
+                <h2 class="card-header text-white azul-2" style="margin-top:0px ; margin-bottom:15px">Detalles de Pelicula</h2>
+                <dl class="dl-horizontal text-left">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
 
-<div>
-    <h4>Movie</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Sinopsis)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sinopsis)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Sinopsis)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sinopsis)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Estreno)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Estreno)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Estreno)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Estreno)
-        </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Genero)
+                    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Genero)
-        </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Genero)
+                    </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Genero)
-        </dd>
-
-    </dl>
+                </dl>
+            </div>
+            <div class="">
+                <button type="button" class="btn btn-success azul-1 float-right mt-3" onclick="location.href='@Url.Action("Index", "Movies")'">Volver</button>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+           
